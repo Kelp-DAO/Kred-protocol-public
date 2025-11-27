@@ -1,0 +1,44 @@
+[profile.default]
+evm_version = "cancun" 
+src = "src"
+out = "out"
+libs = ["lib"]
+test = "test"
+cache_path = "cache_forge"
+optimizer = true
+optimizer_runs = 10_000
+solc_version = "0.8.30"
+build_info = true
+extra_output = ["storageLayout"]
+threads=0  # Increases tests speed
+etherscan_api_key = "${ETHERSCAN_API_KEY}"
+remappings = [
+    "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "forge-std/=lib/forge-std/src/"
+]
+
+
+[profile.ci]
+optimizer = true
+optimizer_runs = 10_000
+verbosity = 3
+
+
+[fuzz]
+runs = 10_000
+
+
+[fmt]
+bracket_spacing = true
+int_types = "long"
+line_length = 120
+multiline_func_header = "all"
+number_underscore = "thousands"
+quote_style = "double"
+tab_width = 4
+wrap_comments = true
+
+
+[rpc_endpoints]
+mainnet = "https://eth-mainnet.g.alchemy.com/v2/${API_KEY_ALCHEMY}"
